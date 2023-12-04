@@ -9,7 +9,7 @@ gcs_file_system = gcsfs.GCSFileSystem(project="AssignmentFive")
 gcs_json_path = "gs://laurenbucketyoutube/history/watch-history.json"
 with gcs_file_system.open(gcs_json_path) as f:
     json_dict = json.load(f)
-
+gs://laurenbucketyoutube/history/watch-history.json
 
 # Function to read JSON data from GCS
 def read_gcs_data(bucket_name, object_name):
