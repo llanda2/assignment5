@@ -3,6 +3,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
+__author__ = "Lauren Landa"
+__credits__ = ["Lauren Landa"]
+__license__ = "MIT"
 
 # Load your YouTube watch history from Google Takeout
 with open('/Users/laurenlanda/Desktop/Takeout/YouTube and YouTube Music/history/watch-history.json', 'r') as file:
