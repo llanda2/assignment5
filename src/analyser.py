@@ -1,30 +1,40 @@
-import gcsfs
-from pyspark.sql import SparkSession
-from google.cloud import storage
-from io import BytesIO
 import json
-#Hmmm why no work
-#link used: https://stackoverflow.com/questions/58708081/how-to-read-json-file-in-python-code-from-google-cloud-storage-bucket
-gcs_file_system = gcsfs.GCSFileSystem(project="AssignmentFive")
-gcs_json_path = "gs://laurenbucketyoutube/history/watch-history.json"
-with gcs_file_system.open(gcs_json_path) as f:
-    json_dict = json.load(f)
-gs://laurenbucketyoutube/history/watch-history.json
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.preprocessing import LabelEncoder
 
-# Function to read JSON data from GCS
-def read_gcs_data(bucket_name, object_name):
-    client = storage.Client()
-    bucket = client.get_bucket(bucket_name)
-    blob = bucket.blob(object_name)
-    content = blob.download_as_text()
-    return BytesIO(content.encode())
+# Load your YouTube watch history from Google Takeout
+with open('/Users/laurenlanda/Desktop/Takeout/YouTube and YouTube Music/history/watch-history.json', 'r') as file:
+    watch_history = json.load(file)
 
+# Extract features and labels
+titles = [entry['title'] for entry in watch_history]
+genres = [entry.get('description', '') for entry in watch_history]  # Using description as a substitute for genre
 
-# Read a sample of data from GCS into a PySpark DataFrame
-data = spark.read.json(read_gcs_data(bucket_name, object_name))
+# Encode labels (genres) into numerical values
+label_encoder = LabelEncoder()
+encoded_genres = label_encoder.fit_transform(genres)
 
-# Display a few rows of the DataFrame
-data.show()
+# Create a mapping of encoded labels to original labels
+label_mapping = dict(zip(encoded_genres, genres))
 
-# Stop the Spark session
-spark.stop()
+# Vectorize text data using TF-IDF
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(titles)
+
+# Prepare the features and labels for training
+X_train, X_test, y_train, y_test = train_test_split(X[:-1], encoded_genres[1:], test_size=0.2, random_state=42)
+
+# Create and train a decision tree classifier
+classifier = DecisionTreeClassifier()
+classifier.fit(X_train, y_train)
+
+# Make predictions on the next video genre
+next_video_title = titles[-1]
+next_video_title_vectorized = vectorizer.transform([next_video_title])
+predicted_genre_encoded = classifier.predict(next_video_title_vectorized)[0]
+predicted_genre = label_mapping[predicted_genre_encoded]
+
+# Print the predicted genre
+print(f"The predicted genre for the next video ('{next_video_title}') is: {predicted_genre}")
