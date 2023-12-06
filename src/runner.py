@@ -64,9 +64,18 @@ from sklearn.preprocessing import MinMaxScaler
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
-# Set up your API key
+# Set up  API key
 api_key = 'AIzaSyBB__ugeyjrQxGceHF1S6o0PIqBoOfWD4E'
 youtube = build('youtube', 'v3', developerKey=api_key)
+# Load YouTube watch history from a JSON file
+with open('/Users/laurenlanda/Desktop/Takeout/YouTube and YouTube Music/history/watch-history.json', 'r') as file:
+    watch_history = json.load(file)
+#make request to youtube api
+    request = youtube.videoCategories().list(
+        part="snippet",
+        regionCode="US"
+    )
+    response = request.execute()
 
 # Load your YouTube watch history from a JSON file
 with open('/Users/laurenlanda/Desktop/Takeout/YouTube and YouTube Music/history/watch-history.json', 'r') as file:
