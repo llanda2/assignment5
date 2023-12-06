@@ -1,5 +1,5 @@
 import json
-
+import os
 from googleapiclient.discovery import build
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -60,26 +60,33 @@ X_train, X_test, y_train, y_test = train_test_split(video_texts, [category for c
 classifier = make_pipeline(TfidfVectorizer(), MultinomialNB())
 classifier.fit(X_train, y_train)
 
+
+
+# Define the output directory and file path
+output_directory = 'src/out'
+output_file_path = os.path.join(output_directory, 'genreResults.txt')
+
+# Create the output directory if it doesn't exist
+os.makedirs(output_directory, exist_ok=True)
+
 # Predict the next video category for each video in the dataset
-# Predict the next video category for each video in the dataset
-# Predict the next video category for each video in the dataset
-# Predict the next video category for each video in the dataset
-for video_id, current_category in video_categories.items():
-    # Convert video_id to integer
-    video_id = int(video_id)
+with open(output_file_path, 'w') as output_file:
+    for video_id, current_category in video_categories.items():
+        # Convert video_id to integer
+        video_id = int(video_id)
 
-    if video_id < len(video_texts):
-        current_title = video_texts[video_id]
+        if video_id < len(video_texts):
+            current_title = video_texts[video_id]
 
-        # Preprocess the current title
-        current_title = preprocess_text(current_title)
+            # Preprocess the current title
+            current_title = preprocess_text(current_title)
 
-        # Make prediction on the current title
-        predicted_category_prob = classifier.predict_proba([current_title])[0]
-        predicted_category = classifier.classes_[predicted_category_prob.argmax()]
-        probability_percentage = predicted_category_prob.max() * 100
+            # Make prediction on the current title
+            predicted_category_prob = classifier.predict_proba([current_title])[0]
+            predicted_category = classifier.classes_[predicted_category_prob.argmax()]
+            probability_percentage = predicted_category_prob.max() * 100
 
-        # Print the output in the requested format
-        print(f"Given that genre '{current_category}' of the video Lauren just watched, "
-              f"the probability of the genre '{predicted_category}' of the next video being watched is {probability_percentage:.2f}%")
-
+            # Write the output to the file
+            output_line = (f"Given the genre '{current_category}' of the previous video, "
+                           f"the probability of the genre '{predicted_category}' of the next video being watched is {probability_percentage:.2f}%\n")
+            output_file.write(output_line)

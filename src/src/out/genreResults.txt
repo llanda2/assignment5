@@ -1,0 +1,19 @@
+Given the genre 'Film & Animation' of the previous video, the probability of the genre 'Autos & Vehicles' of the next video being watched is 8.13%
+Given the genre 'Autos & Vehicles' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 7.84%
+Given the genre 'Music' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 14.89%
+Given the genre 'Pets & Animals' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 8.48%
+Given the genre 'Sports' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 8.48%
+Given the genre 'Short Movies' of the previous video, the probability of the genre 'Anime/Animation' of the next video being watched is 8.58%
+Given the genre 'Travel & Events' of the previous video, the probability of the genre 'Action/Adventure' of the next video being watched is 8.50%
+Given the genre 'Gaming' of the previous video, the probability of the genre 'Classics' of the next video being watched is 8.22%
+Given the genre 'Videoblogging' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 14.98%
+Given the genre 'People & Blogs' of the previous video, the probability of the genre 'Documentary' of the next video being watched is 7.99%
+Given the genre 'Comedy' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 8.48%
+Given the genre 'Entertainment' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 9.79%
+Given the genre 'News & Politics' of the previous video, the probability of the genre 'Foreign' of the next video being watched is 7.86%
+Given the genre 'Howto & Style' of the previous video, the probability of the genre 'Horror' of the next video being watched is 7.96%
+Given the genre 'Education' of the previous video, the probability of the genre 'Sci-Fi/Fantasy' of the next video being watched is 8.22%
+Given the genre 'Science & Technology' of the previous video, the probability of the genre 'Thriller' of the next video being watched is 8.47%
+Given the genre 'Nonprofits & Activism' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 8.48%
+Given the genre 'Movies' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 14.19%
+Given the genre 'Anime/Animation' of the previous video, the probability of the genre 'Trailers' of the next video being watched is 8.06%
