@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 
 from googleapiclient.discovery import build
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -8,9 +7,10 @@ from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import train_test_split
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-import google_auth_oauthlib.flow
-import googleapiclient.discovery
-import googleapiclient.errors
+
+# import google_auth_oauthlib.flow
+# import googleapiclient.discovery
+# import googleapiclient.errors
 
 # Set up  API key
 api_key = 'AIzaSyBB__ugeyjrQxGceHF1S6o0PIqBoOfWD4E'
@@ -20,6 +20,7 @@ scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 # Define stop_words
 stop_words = set(stopwords.words('english'))
+
 
 def fetch_video_categories(api_key):
     youtube = build('youtube', 'v3', developerKey=api_key)
@@ -59,15 +60,26 @@ X_train, X_test, y_train, y_test = train_test_split(video_texts, [category for c
 classifier = make_pipeline(TfidfVectorizer(), MultinomialNB())
 classifier.fit(X_train, y_train)
 
-# Make predictions on the test set
-y_pred = classifier.predict(X_test)
+# Predict the next video category for each video in the dataset
+# Predict the next video category for each video in the dataset
+# Predict the next video category for each video in the dataset
+# Predict the next video category for each video in the dataset
+for video_id, current_category in video_categories.items():
+    # Convert video_id to integer
+    video_id = int(video_id)
 
-# # Print the predicted categories
-# # print("Predicted Categories for the Next Video:")
-# # for predicted_category in y_pred:
-# #     print(predicted_category)
-# Print all possible genres
-print("All Possible Genres:")
-for category_id, category_title in video_categories.items():
-    print(f"{category_title}: {category_id}")
+    if video_id < len(video_texts):
+        current_title = video_texts[video_id]
+
+        # Preprocess the current title
+        current_title = preprocess_text(current_title)
+
+        # Make prediction on the current title
+        predicted_category_prob = classifier.predict_proba([current_title])[0]
+        predicted_category = classifier.classes_[predicted_category_prob.argmax()]
+        probability_percentage = predicted_category_prob.max() * 100
+
+        # Print the output in the requested format
+        print(f"Given that genre '{current_category}' of the video Lauren just watched, "
+              f"the probability of the genre '{predicted_category}' of the next video being watched is {probability_percentage:.2f}%")
 
