@@ -17,3 +17,32 @@ Given the genre 'Science & Technology' of the previous video, the probability of
 Given the genre 'Nonprofits & Activism' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 8.48%
 Given the genre 'Movies' of the previous video, the probability of the genre 'Comedy' of the next video being watched is 14.19%
 Given the genre 'Anime/Animation' of the previous video, the probability of the genre 'Trailers' of the next video being watched is 8.06%
+
+Accuracy: 0.00%
+
+Classification Report:
+                      precision    recall  f1-score   support
+
+              Comedy       0.00      0.00      0.00       0.0
+              Family       0.00      0.00      0.00       1.0
+              Movies       0.00      0.00      0.00       1.0
+      People & Blogs       0.00      0.00      0.00       1.0
+Science & Technology       0.00      0.00      0.00       1.0
+              Shorts       0.00      0.00      0.00       1.0
+               Shows       0.00      0.00      0.00       1.0
+       Videoblogging       0.00      0.00      0.00       1.0
+
+            accuracy                           0.00       7.0
+           macro avg       0.00      0.00      0.00       7.0
+        weighted avg       0.00      0.00      0.00       7.0
+
+
+Confusion Matrix:
+[[0 0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0 0]]

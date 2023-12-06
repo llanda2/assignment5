@@ -1,5 +1,9 @@
 import json
 import os
+from collections import Counter
+from random import random
+import random as rand_module
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from googleapiclient.discovery import build
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -60,7 +64,17 @@ X_train, X_test, y_train, y_test = train_test_split(video_texts, [category for c
 classifier = make_pipeline(TfidfVectorizer(), MultinomialNB())
 classifier.fit(X_train, y_train)
 
+# Use the trained classifier to make predictions on the test set
+y_pred = classifier.predict(X_test)
 
+# Evaluate the accuracy
+accuracy = accuracy_score(y_test, y_pred)
+
+# Display additional metrics
+classification_rep = classification_report(y_test, y_pred)
+
+# Display confusion matrix
+confusion_mat = confusion_matrix(y_test, y_pred)
 
 # Define the output directory and file path
 output_directory = 'src/out'
@@ -68,6 +82,7 @@ output_file_path = os.path.join(output_directory, 'genreResults.txt')
 
 # Create the output directory if it doesn't exist
 os.makedirs(output_directory, exist_ok=True)
+# Validate Samples
 
 # Predict the next video category for each video in the dataset
 with open(output_file_path, 'w') as output_file:
@@ -90,3 +105,10 @@ with open(output_file_path, 'w') as output_file:
             output_line = (f"Given the genre '{current_category}' of the previous video, "
                            f"the probability of the genre '{predicted_category}' of the next video being watched is {probability_percentage:.2f}%\n")
             output_file.write(output_line)
+
+    # # Write accuracy, classification report, and confusion matrix to the file
+    # output_file.write(f"\nAccuracy: {accuracy:.2%}\n\n")
+    # output_file.write("Classification Report:\n")
+    # output_file.write(str(classification_rep))
+    # output_file.write("\n\nConfusion Matrix:\n")
+    # output_file.write(str(confusion_mat))
