@@ -1,4 +1,6 @@
 import json
+from datetime import datetime
+
 from googleapiclient.discovery import build
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -60,11 +62,12 @@ classifier.fit(X_train, y_train)
 # Make predictions on the test set
 y_pred = classifier.predict(X_test)
 
-# Print the predicted categories
-# print("Predicted Categories for the Next Video:")
-# for predicted_category in y_pred:
-#     print(predicted_category)
+# # Print the predicted categories
+# # print("Predicted Categories for the Next Video:")
+# # for predicted_category in y_pred:
+# #     print(predicted_category)
 # Print all possible genres
 print("All Possible Genres:")
 for category_id, category_title in video_categories.items():
     print(f"{category_title}: {category_id}")
+
