@@ -105,10 +105,3 @@ with open(output_file_path, 'w') as output_file:
             output_line = (f"Given the genre '{current_category}' of the previous video, "
                            f"the probability of the genre '{predicted_category}' of the next video being watched is {probability_percentage:.2f}%\n")
             output_file.write(output_line)
-
-    # # Write accuracy, classification report, and confusion matrix to the file
-    # output_file.write(f"\nAccuracy: {accuracy:.2%}\n\n")
-    # output_file.write("Classification Report:\n")
-    # output_file.write(str(classification_rep))
-    # output_file.write("\n\nConfusion Matrix:\n")
-    # output_file.write(str(confusion_mat))
