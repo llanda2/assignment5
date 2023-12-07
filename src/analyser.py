@@ -3,6 +3,7 @@ import os
 from collections import Counter
 from random import random
 import random as rand_module
+import pandas as pd
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from googleapiclient.discovery import build
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -53,14 +54,35 @@ def preprocess_text(text):
 
 video_texts = [preprocess_text(text) for text in video_texts]
 
-# Limit the number of videos to match the number of categories
-num_videos_to_use = len(video_categories)
-video_texts = video_texts[:num_videos_to_use]
+# Fetch video categories only for the videos in watch history
+video_categories = fetch_video_categories(api_key)
+video_categories = {video_id: video_categories.get(video_id, '') for video_id in video_categories.keys()}
+
+
+def preprocess_text(text):
+    words = word_tokenize(text)
+    words = [word.lower() for word in words if word.isalpha() and word.lower() not in stop_words]
+    return ' '.join(words)
+
+
+video_texts = [preprocess_text(text) for text in video_texts]
+
+# Combine video_texts and categories into a DataFrame
+df = pd.DataFrame({'text': video_texts, 'category': list(video_categories.values())})
+
+# Split the DataFrame into training and testing sets
+train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
+# Combine video_texts and categories into a DataFrame
+print(len(video_texts), len(list(video_categories.values())))
+df = pd.DataFrame({'text': video_texts, 'category': list(video_categories.values())})
+
+# Extract X_train, X_test, y_train, y_test
+X_train = train_df['text'].tolist()
+y_train = train_df['category'].tolist()
+X_test = test_df['text'].tolist()
+y_test = test_df['category'].tolist()
 
 # Train a simple classifier using video categories
-X_train, X_test, y_train, y_test = train_test_split(video_texts, [category for category in video_categories.values()],
-                                                    test_size=0.2, random_state=42)
-
 classifier = make_pipeline(TfidfVectorizer(), MultinomialNB())
 classifier.fit(X_train, y_train)
 
@@ -82,26 +104,25 @@ output_file_path = os.path.join(output_directory, 'genreResults.txt')
 
 # Create the output directory if it doesn't exist
 os.makedirs(output_directory, exist_ok=True)
-# Validate Samples
 
-# Predict the next video category for each video in the dataset
-with open(output_file_path, 'w') as output_file:
-    for video_id, current_category in video_categories.items():
-        # Convert video_id to integer
-        video_id = int(video_id)
-
-        if video_id < len(video_texts):
-            current_title = video_texts[video_id]
-
-            # Preprocess the current title
-            current_title = preprocess_text(current_title)
-
-            # Make prediction on the current title
-            predicted_category_prob = classifier.predict_proba([current_title])[0]
-            predicted_category = classifier.classes_[predicted_category_prob.argmax()]
-            probability_percentage = predicted_category_prob.max() * 100
-
-            # Write the output to the file
-            output_line = (f"Given the genre '{current_category}' of the previous video, "
-                           f"the probability of the genre '{predicted_category}' of the next video being watched is {probability_percentage:.2f}%\n")
-            output_file.write(output_line)
+# # Predict the next video category for each video in the dataset
+# with open(output_file_path, 'w') as output_file:
+#     for video_id, current_category in video_categories.items():
+#         # Convert video_id to integer
+#         video_id = int(video_id)
+#
+#         if video_id < len(video_texts):
+#             current_title = video_texts[video_id]
+#
+#             # Preprocess the current title
+#             current_title = preprocess_text(current_title)
+#
+#             # Make prediction on the current title
+#             predicted_category_prob = classifier.predict_proba([current_title])[0]
+#             predicted_category = classifier.classes_[predicted_category_prob.argmax()]
+#             probability_percentage = predicted_category_prob.max() * 100
+#
+#             # Write the output to the file
+#             output_line = (f"Given the genre '{current_category}' of the previous video, "
+#                            f"the probability of the genre '{predicted_category}' of the next video being watched is {probability_percentage:.2f}%\n")
+#             output_file.write(output_line)
