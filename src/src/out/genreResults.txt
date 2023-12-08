@@ -1,46 +1,26 @@
-Given that the current genre of the video is 'Videoblogging', the likelihood that the next video is 'Comedy' is 14.98%
-Given that the current genre of the video is 'Music', the likelihood that the next video is 'Comedy' is 14.89%
-Given that the current genre of the video is 'Movies', the likelihood that the next video is 'Comedy' is 14.19%
-Given that the current genre of the video is 'Entertainment', the likelihood that the next video is 'Comedy' is 9.79%
-Given that the current genre of the video is 'Short Movies', the likelihood that the next video is 'Anime/Animation' is 8.58%
-Given that the current genre of the video is 'Travel & Events', the likelihood that the next video is 'Action/Adventure' is 8.50%
-Given that the current genre of the video is 'Pets & Animals', the likelihood that the next video is 'Comedy' is 8.48%
-Given that the current genre of the video is 'Sports', the likelihood that the next video is 'Comedy' is 8.48%
-Given that the current genre of the video is 'Comedy', the likelihood that the next video is 'Comedy' is 8.48%
-Given that the current genre of the video is 'Nonprofits & Activism', the likelihood that the next video is 'Comedy' is 8.48%
-Given that the current genre of the video is 'Science & Technology', the likelihood that the next video is 'Thriller' is 8.47%
-Given that the current genre of the video is 'Education', the likelihood that the next video is 'Sci-Fi/Fantasy' is 8.22%
-Given that the current genre of the video is 'Gaming', the likelihood that the next video is 'Classics' is 8.22%
-Given that the current genre of the video is 'Film & Animation', the likelihood that the next video is 'Autos & Vehicles' is 8.13%
-Given that the current genre of the video is 'Anime/Animation', the likelihood that the next video is 'Trailers' is 8.06%
-Given that the current genre of the video is 'People & Blogs', the likelihood that the next video is 'Documentary' is 7.99%
-Given that the current genre of the video is 'Howto & Style', the likelihood that the next video is 'Horror' is 7.96%
-Given that the current genre of the video is 'News & Politics', the likelihood that the next video is 'Foreign' is 7.86%
-Given that the current genre of the video is 'Autos & Vehicles', the likelihood that the next video is 'Comedy' is 7.84%
+Actual: Unknown | Predicted: Unknown
+Actual: Unknown | Predicted: Unknown
+Actual: Unknown | Predicted: Unknown
+Actual: Unknown | Predicted: Unknown
+Actual: Unknown | Predicted: Unknown
+Actual: Unknown | Predicted: Unknown
+Actual: Unknown | Predicted: Unknown
+Actual: Unknown | Predicted: Unknown
+Actual: Unknown | Predicted: Unknown
+Actual: Unknown | Predicted: Unknown
 
 Chart:
-+-----------------------+------------------+
-|       Previous        |    Predicted     |
-+-----------------------+------------------+
-|     Videoblogging     |      Comedy      |
-|         Music         |      Comedy      |
-|        Movies         |      Comedy      |
-|     Entertainment     |      Comedy      |
-|     Short Movies      | Anime/Animation  |
-|    Travel & Events    | Action/Adventure |
-|    Pets & Animals     |      Comedy      |
-|        Sports         |      Comedy      |
-|        Comedy         |      Comedy      |
-| Nonprofits & Activism |      Comedy      |
-| Science & Technology  |     Thriller     |
-|       Education       |  Sci-Fi/Fantasy  |
-|        Gaming         |     Classics     |
-|   Film & Animation    | Autos & Vehicles |
-|    Anime/Animation    |     Trailers     |
-|    People & Blogs     |   Documentary    |
-|     Howto & Style     |      Horror      |
-|    News & Politics    |     Foreign      |
-|   Autos & Vehicles    |      Comedy      |
-+-----------------------+------------------+
-Most Watched Category: Trailers
-Least Watched Category: Autos & Vehicles
++---------+-----------+
+| Actual  | Predicted |
++---------+-----------+
+| Unknown |  Unknown  |
+| Unknown |  Unknown  |
+| Unknown |  Unknown  |
+| Unknown |  Unknown  |
+| Unknown |  Unknown  |
+| Unknown |  Unknown  |
+| Unknown |  Unknown  |
+| Unknown |  Unknown  |
+| Unknown |  Unknown  |
+| Unknown |  Unknown  |
++---------+-----------+
