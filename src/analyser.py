@@ -60,8 +60,6 @@ X_train, X_test, y_train, y_test = train_test_split(video_texts, [category for c
 classifier = make_pipeline(TfidfVectorizer(), MultinomialNB())
 classifier.fit(X_train, y_train)
 
-
-
 # Define the output directory and file path
 output_directory = 'src/out'
 output_file_path = os.path.join(output_directory, 'genreResults.txt')
@@ -71,6 +69,9 @@ os.makedirs(output_directory, exist_ok=True)
 
 # Predict the next video category for each video in the dataset
 with open(output_file_path, 'w') as output_file:
+    # Predict the next video category for each video in the dataset
+    predictions = []
+
     for video_id, current_category in video_categories.items():
         # Convert video_id to integer
         video_id = int(video_id)
@@ -86,7 +87,19 @@ with open(output_file_path, 'w') as output_file:
             predicted_category = classifier.classes_[predicted_category_prob.argmax()]
             probability_percentage = predicted_category_prob.max() * 100
 
-            # Write the output to the file
-            output_line = (f"Given the genre '{current_category}' of the previous video, "
-                           f"the probability of the genre '{predicted_category}' of the next video being watched is {probability_percentage:.2f}%\n")
+            # Store predictions in a list
+            predictions.append({
+                'current_category': current_category,
+                'predicted_category': predicted_category,
+                'probability_percentage': probability_percentage
+            })
+
+    # Sort predictions based on probability in descending order
+    sorted_predictions = sorted(predictions, key=lambda x: x['probability_percentage'], reverse=True)
+
+    # Write the sorted predictions to the output file
+    with open(output_file_path, 'w') as output_file:
+        for prediction in sorted_predictions:
+            output_line = (f"Given that the current genre of the video is '{prediction['current_category']}', "
+                           f"the likelihood that the next video is '{prediction['predicted_category']}' is {prediction['probability_percentage']:.2f}%\n")
             output_file.write(output_line)
