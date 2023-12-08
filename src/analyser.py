@@ -4,14 +4,15 @@ from googleapiclient.discovery import build
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import make_pipeline
-from sklearn.model_selection import train_test_split, StratifiedKFold, GridSearchCV
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
-from sklearn.utils import shuffle
-from imblearn.over_sampling import RandomOverSampler
+from sklearn.model_selection import train_test_split
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
-# Set up API key
+# import google_auth_oauthlib.flow
+# import googleapiclient.discovery
+# import googleapiclient.errors
+
+# Set up  API key
 api_key = 'AIzaSyBB__ugeyjrQxGceHF1S6o0PIqBoOfWD4E'
 
 # Fetch video categories using OAuth
@@ -48,51 +49,44 @@ def preprocess_text(text):
 
 video_texts = [preprocess_text(text) for text in video_texts]
 
-# Convert video_texts to a 2D array
-video_texts_2d = [[text] for text in video_texts]
-
 # Limit the number of videos to match the number of categories
 num_videos_to_use = len(video_categories)
-video_texts_2d = video_texts_2d[:num_videos_to_use]
+video_texts = video_texts[:num_videos_to_use]
 
-# Over-sample minority classes
-oversampler = RandomOverSampler(random_state=42)
-X_resampled, y_resampled = oversampler.fit_resample(video_texts_2d, [category for category in video_categories.values()])
+# Train a simple classifier using video categories
+X_train, X_test, y_train, y_test = train_test_split(video_texts, [category for category in video_categories.values()],
+                                                    test_size=0.2, random_state=42)
 
-# Train-test split on the resampled data
-X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42)
-
-# Hyperparameter tuning using grid search with StratifiedKFold
-param_grid = {
-    'pipeline__tfidfvectorizer__max_df': [0.7, 0.8, 0.9],
-    'pipeline__tfidfvectorizer__min_df': [1, 2, 3],
-    'pipeline__multinomialnb__alpha': [0.1, 0.5, 1.0]
-}
+classifier = make_pipeline(TfidfVectorizer(), MultinomialNB())
+classifier.fit(X_train, y_train)
 
 
-pipeline = make_pipeline(TfidfVectorizer(), MultinomialNB())
-stratified_kfold = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
-grid_search = GridSearchCV(pipeline, param_grid, cv=stratified_kfold, scoring='accuracy')
-grid_search.fit(X_train, y_train)
 
-# Print the best parameters from grid search
-print("Best Parameters from Grid Search:", grid_search.best_params_)
+# Define the output directory and file path
+output_directory = 'src/out'
+output_file_path = os.path.join(output_directory, 'genreResults.txt')
 
-# Evaluate the model on the test set
-predicted_labels = grid_search.predict(X_test)
+# Create the output directory if it doesn't exist
+os.makedirs(output_directory, exist_ok=True)
 
-# Print accuracy, precision, recall, and F1 score
-accuracy = accuracy_score(y_test, predicted_labels)
-precision = precision_score(y_test, predicted_labels, average='weighted')
-recall = recall_score(y_test, predicted_labels, average='weighted')
-f1 = f1_score(y_test, predicted_labels, average='weighted')
+# Predict the next video category for each video in the dataset
+with open(output_file_path, 'w') as output_file:
+    for video_id, current_category in video_categories.items():
+        # Convert video_id to integer
+        video_id = int(video_id)
 
-print(f"Accuracy: {accuracy * 100:.2f}%")
-print(f"Precision: {precision * 100:.2f}%")
-print(f"Recall: {recall * 100:.2f}%")
-print(f"F1 Score: {f1 * 100:.2f}%")
+        if video_id < len(video_texts):
+            current_title = video_texts[video_id]
 
-# Print confusion matrix
-conf_matrix = confusion_matrix(y_test, predicted_labels)
-print("\nConfusion Matrix:")
-print(conf_matrix)
+            # Preprocess the current title
+            current_title = preprocess_text(current_title)
+
+            # Make prediction on the current title
+            predicted_category_prob = classifier.predict_proba([current_title])[0]
+            predicted_category = classifier.classes_[predicted_category_prob.argmax()]
+            probability_percentage = predicted_category_prob.max() * 100
+
+            # Write the output to the file
+            output_line = (f"Given the genre '{current_category}' of the previous video, "
+                           f"the probability of the genre '{predicted_category}' of the next video being watched is {probability_percentage:.2f}%\n")
+            output_file.write(output_line)
