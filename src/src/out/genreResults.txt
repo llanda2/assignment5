@@ -17,3 +17,30 @@ Given that the current genre of the video is 'People & Blogs', the likelihood th
 Given that the current genre of the video is 'Howto & Style', the likelihood that the next video is 'Horror' is 7.96%
 Given that the current genre of the video is 'News & Politics', the likelihood that the next video is 'Foreign' is 7.86%
 Given that the current genre of the video is 'Autos & Vehicles', the likelihood that the next video is 'Comedy' is 7.84%
+
+Chart:
++-----------------------+------------------+
+|       Previous        |    Predicted     |
++-----------------------+------------------+
+|     Videoblogging     |      Comedy      |
+|         Music         |      Comedy      |
+|        Movies         |      Comedy      |
+|     Entertainment     |      Comedy      |
+|     Short Movies      | Anime/Animation  |
+|    Travel & Events    | Action/Adventure |
+|    Pets & Animals     |      Comedy      |
+|        Sports         |      Comedy      |
+|        Comedy         |      Comedy      |
+| Nonprofits & Activism |      Comedy      |
+| Science & Technology  |     Thriller     |
+|       Education       |  Sci-Fi/Fantasy  |
+|        Gaming         |     Classics     |
+|   Film & Animation    | Autos & Vehicles |
+|    Anime/Animation    |     Trailers     |
+|    People & Blogs     |   Documentary    |
+|     Howto & Style     |      Horror      |
+|    News & Politics    |     Foreign      |
+|   Autos & Vehicles    |      Comedy      |
++-----------------------+------------------+
+Most Watched Category: Trailers
+Least Watched Category: Autos & Vehicles

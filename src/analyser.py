@@ -7,12 +7,9 @@ from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import train_test_split
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+from tabulate import tabulate
 
-# import google_auth_oauthlib.flow
-# import googleapiclient.discovery
-# import googleapiclient.errors
-
-# Set up  API key
+# Set up API key
 api_key = 'AIzaSyBB__ugeyjrQxGceHF1S6o0PIqBoOfWD4E'
 
 # Fetch video categories using OAuth
@@ -91,7 +88,8 @@ with open(output_file_path, 'w') as output_file:
             predictions.append({
                 'current_category': current_category,
                 'predicted_category': predicted_category,
-                'probability_percentage': probability_percentage
+                'probability_percentage': probability_percentage,
+                'views': video_id  # Replace this with the actual number of views
             })
 
     # Sort predictions based on probability in descending order
@@ -103,3 +101,19 @@ with open(output_file_path, 'w') as output_file:
             output_line = (f"Given that the current genre of the video is '{prediction['current_category']}', "
                            f"the likelihood that the next video is '{prediction['predicted_category']}' is {prediction['probability_percentage']:.2f}%\n")
             output_file.write(output_line)
+
+        # Print chart with predicted and previous categories
+        chart_data = [(prediction['current_category'], prediction['predicted_category']) for prediction in
+                      sorted_predictions]
+
+        output_file.write("\nChart:\n")
+        chart_headers = ["Previous", "Predicted"]
+        chart_str = tabulate(chart_data, headers=chart_headers, tablefmt="pretty")
+        output_file.write(chart_str)
+
+        # Find the most and least watched categories
+        most_watched_category = max(sorted_predictions, key=lambda x: x['views'])['predicted_category']
+        least_watched_category = min(sorted_predictions, key=lambda x: x['views'])['predicted_category']
+
+        output_file.write(f"\nMost Watched Category: {most_watched_category}\n")
+        output_file.write(f"Least Watched Category: {least_watched_category}\n")
