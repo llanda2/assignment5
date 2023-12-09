@@ -194,8 +194,8 @@ def fetch_video_category(api_key, video_url):
 # Load YouTube watch history from a JSON file
 with open('/Users/laurenlanda/Desktop/Takeout/YouTube and YouTube Music/history/watch-history.json', 'r') as file:
     watch_history = json.load(file)
-# Use only the first 50 entries for testing
-watch_history_subset = watch_history[:50]
+# Use only the first 500 entries for testing
+watch_history_subset = watch_history[:500]
 
 # Extract relevant information from the subset
 video_texts = [video['title'] + ' ' + video.get('description', '') for video in watch_history_subset]
@@ -205,44 +205,50 @@ video_categories = [fetch_video_category(api_key, url) for url in video_urls]
 # Train a simple classifier using video categories
 X_train, X_test, y_train, y_test = train_test_split(video_texts, video_categories, test_size=0.2, random_state=42)
 
+# Filter out instances with None in the target variable
+X_train = [text for text, category in zip(X_train, y_train) if category is not None]
+y_train = [category for category in y_train if category is not None]
+
 # Create a pipeline with TF-IDF vectorizer and Naive Bayes classifier
 classifier = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
 # Train the classifier
 classifier.fit(X_train, y_train)
+
+# Update the category_mapping dictionary based on the actual category IDs
 category_mapping = {
-    1: 'Film & Animation',
-    2: 'Autos & Vehicles',
-    10: 'Music',
-    15: 'Pets & Animals',
-    17: 'Sports',
-    18: 'Short Movies',
-    19: 'Travel & Events',
-    20: 'Gaming',
-    21: 'Videoblogging',
-    22: 'People & Blogs',
-    23: 'Comedy',
-    24: 'Entertainment',
-    25: 'News & Politics',
-    26: 'Howto & Style',
-    27: 'Education',
-    28: 'Science & Technology',
-    29: 'Nonprofits & Activism',
-    30: 'Movies',
-    31: 'Anime/Animation',
-    32: 'Action/Adventure',
-    33: 'Classics',
-    34: 'Comedy',
-    35: 'Documentary',
-    36: 'Drama',
-    37: 'Family',
-    38: 'Foreign',
-    39: 'Horror',
-    40: 'Sci-Fi/Fantasy',
-    41: 'Thriller',
-    42: 'Shorts',
-    43: 'Shows',
-    44: 'Trailers'
+    '1': 'Film & Animation',
+    '2': 'Autos & Vehicles',
+    '10': 'Music',
+    '15': 'Pets & Animals',
+    '17': 'Sports',
+    '18': 'Short Movies',
+    '19': 'Travel & Events',
+    '20': 'Gaming',
+    '21': 'Videoblogging',
+    '22': 'People & Blogs',
+    '23': 'Comedy',
+    '24': 'Entertainment',
+    '25': 'News & Politics',
+    '26': 'Howto & Style',
+    '27': 'Education',
+    '28': 'Science & Technology',
+    '29': 'Nonprofits & Activism',
+    '30': 'Movies',
+    '31': 'Anime/Animation',
+    '32': 'Action/Adventure',
+    '33': 'Classics',
+    '34': 'Comedy',
+    '35': 'Documentary',
+    '36': 'Drama',
+    '37': 'Family',
+    '38': 'Foreign',
+    '39': 'Horror',
+    '40': 'Sci-Fi/Fantasy',
+    '41': 'Thriller',
+    '42': 'Shorts',
+    '43': 'Shows',
+    '44': 'Trailers'
 }
 
 # Predictions on the test set

@@ -1,26 +1,206 @@
-Actual: Unknown | Predicted: Unknown
-Actual: Unknown | Predicted: Unknown
-Actual: Unknown | Predicted: Unknown
-Actual: Unknown | Predicted: Unknown
-Actual: Unknown | Predicted: Unknown
-Actual: Unknown | Predicted: Unknown
-Actual: Unknown | Predicted: Unknown
-Actual: Unknown | Predicted: Unknown
-Actual: Unknown | Predicted: Unknown
-Actual: Unknown | Predicted: Unknown
+Actual: News & Politics | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Science & Technology | Predicted: Science & Technology
+Actual: Education | Predicted: Education
+Actual: Entertainment | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Howto & Style
+Actual: Science & Technology | Predicted: Science & Technology
+Actual: Howto & Style | Predicted: Howto & Style
+Actual: Education | Predicted: Entertainment
+Actual: Sports | Predicted: Entertainment
+Actual: Entertainment | Predicted: People & Blogs
+Actual: Entertainment | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Film & Animation | Predicted: Entertainment
+Actual: Science & Technology | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Education | Predicted: Education
+Actual: Science & Technology | Predicted: Science & Technology
+Actual: Education | Predicted: Entertainment
+Actual: Gaming | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Gaming | Predicted: Entertainment
+Actual: Autos & Vehicles | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: Science & Technology | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Science & Technology | Predicted: Entertainment
+Actual: Science & Technology | Predicted: Entertainment
+Actual: Sports | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Howto & Style
+Actual: Entertainment | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: People & Blogs | Predicted: People & Blogs
+Actual: Gaming | Predicted: Entertainment
+Actual: Education | Predicted: Education
+Actual: Education | Predicted: Education
+Actual: Unknown | Predicted: Entertainment
+Actual: Comedy | Predicted: People & Blogs
+Actual: News & Politics | Predicted: Entertainment
+Actual: People & Blogs | Predicted: People & Blogs
+Actual: Entertainment | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Travel & Events | Predicted: Entertainment
+Actual: Film & Animation | Predicted: Entertainment
+Actual: Unknown | Predicted: Entertainment
+Actual: Science & Technology | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Howto & Style
+Actual: Education | Predicted: Entertainment
+Actual: People & Blogs | Predicted: People & Blogs
+Actual: Entertainment | Predicted: Entertainment
+Actual: Gaming | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Howto & Style | Predicted: Entertainment
+Actual: People & Blogs | Predicted: Entertainment
+Actual: Comedy | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Education | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Entertainment | Predicted: Entertainment
+Actual: Autos & Vehicles | Predicted: Entertainment
 
 Chart:
-+---------+-----------+
-| Actual  | Predicted |
-+---------+-----------+
-| Unknown |  Unknown  |
-| Unknown |  Unknown  |
-| Unknown |  Unknown  |
-| Unknown |  Unknown  |
-| Unknown |  Unknown  |
-| Unknown |  Unknown  |
-| Unknown |  Unknown  |
-| Unknown |  Unknown  |
-| Unknown |  Unknown  |
-| Unknown |  Unknown  |
-+---------+-----------+
++----------------------+----------------------+
+|        Actual        |      Predicted       |
++----------------------+----------------------+
+|   News & Politics    |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+| Science & Technology | Science & Technology |
+|      Education       |      Education       |
+|    Entertainment     |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|      Education       |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Howto & Style     |    Howto & Style     |
+| Science & Technology | Science & Technology |
+|    Howto & Style     |    Howto & Style     |
+|      Education       |    Entertainment     |
+|        Sports        |    Entertainment     |
+|    Entertainment     |    People & Blogs    |
+|    Entertainment     |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|   Film & Animation   |    Entertainment     |
+| Science & Technology |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|      Education       |      Education       |
+| Science & Technology | Science & Technology |
+|      Education       |    Entertainment     |
+|        Gaming        |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|      Education       |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|        Gaming        |    Entertainment     |
+|   Autos & Vehicles   |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+| Science & Technology |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+| Science & Technology |    Entertainment     |
+| Science & Technology |    Entertainment     |
+|        Sports        |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|    Howto & Style     |    Howto & Style     |
+|    Entertainment     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|      Education       |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    People & Blogs    |    People & Blogs    |
+|        Gaming        |    Entertainment     |
+|      Education       |      Education       |
+|      Education       |      Education       |
+|       Unknown        |    Entertainment     |
+|        Comedy        |    People & Blogs    |
+|   News & Politics    |    Entertainment     |
+|    People & Blogs    |    People & Blogs    |
+|    Entertainment     |    Entertainment     |
+|      Education       |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|      Education       |    Entertainment     |
+|      Education       |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|      Education       |    Entertainment     |
+|   Travel & Events    |    Entertainment     |
+|   Film & Animation   |    Entertainment     |
+|       Unknown        |    Entertainment     |
+| Science & Technology |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|      Education       |    Entertainment     |
+|      Education       |    Entertainment     |
+|    Howto & Style     |    Howto & Style     |
+|      Education       |    Entertainment     |
+|    People & Blogs    |    People & Blogs    |
+|    Entertainment     |    Entertainment     |
+|        Gaming        |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|    Howto & Style     |    Entertainment     |
+|    People & Blogs    |    Entertainment     |
+|        Comedy        |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|      Education       |    Entertainment     |
+|      Education       |    Entertainment     |
+|      Education       |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|    Entertainment     |    Entertainment     |
+|   Autos & Vehicles   |    Entertainment     |
++----------------------+----------------------+
