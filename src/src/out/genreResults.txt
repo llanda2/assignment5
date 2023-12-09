@@ -1,46 +1,76 @@
-Given that the current genre of the video is 'Education', the likelihood that the next video is 'Education' is 86.55%
-Given that the current genre of the video is 'Science & Technology', the likelihood that the next video is 'Science & Technology' is 63.67%
-Given that the current genre of the video is 'Entertainment', the likelihood that the next video is 'Entertainment' is 56.90%
-Given that the current genre of the video is 'News & Politics', the likelihood that the next video is 'Entertainment' is 51.06%
-Given that the current genre of the video is 'Autos & Vehicles', the likelihood that the next video is 'Entertainment' is 46.08%
-Given that the current genre of the video is 'Comedy', the likelihood that the next video is 'Entertainment' is 45.54%
-Given that the current genre of the video is 'Travel & Events', the likelihood that the next video is 'Entertainment' is 43.57%
-Given that the current genre of the video is 'Film & Animation', the likelihood that the next video is 'Entertainment' is 41.68%
-Given that the current genre of the video is 'Unknown', the likelihood that the next video is 'Entertainment' is 41.06%
-Given that the current genre of the video is 'Howto & Style', the likelihood that the next video is 'Entertainment' is 38.93%
-Given that the current genre of the video is 'Education', the likelihood that the next video is 'Entertainment' is 37.71%
-Given that the current genre of the video is 'Science & Technology', the likelihood that the next video is 'Entertainment' is 35.75%
-Given that the current genre of the video is 'Howto & Style', the likelihood that the next video is 'Howto & Style' is 34.55%
-Given that the current genre of the video is 'Entertainment', the likelihood that the next video is 'People & Blogs' is 32.24%
-Given that the current genre of the video is 'People & Blogs', the likelihood that the next video is 'Entertainment' is 32.14%
-Given that the current genre of the video is 'Comedy', the likelihood that the next video is 'People & Blogs' is 32.11%
-Given that the current genre of the video is 'Gaming', the likelihood that the next video is 'Entertainment' is 28.62%
-Given that the current genre of the video is 'People & Blogs', the likelihood that the next video is 'People & Blogs' is 28.22%
-Given that the current genre of the video is 'Sports', the likelihood that the next video is 'Entertainment' is 23.74%
+Given that the current genre of the video is 'Travel & Events', the likelihood that the next video is 'Travel & Events' is 93.15%
+Given that the current genre of the video is 'Science & Technology', the likelihood that the next video is 'Science & Technology' is 79.65%
+Given that the current genre of the video is 'Howto & Style', the likelihood that the next video is 'Howto & Style' is 60.85%
+Given that the current genre of the video is 'Entertainment', the likelihood that the next video is 'Entertainment' is 57.42%
+Given that the current genre of the video is 'People & Blogs', the likelihood that the next video is 'People & Blogs' is 53.73%
+Given that the current genre of the video is 'Comedy', the likelihood that the next video is 'Entertainment' is 51.28%
+Given that the current genre of the video is 'Sports', the likelihood that the next video is 'Entertainment' is 49.44%
+Given that the current genre of the video is 'People & Blogs', the likelihood that the next video is 'Education' is 43.19%
+Given that the current genre of the video is 'Education', the likelihood that the next video is 'Education' is 42.37%
+Given that the current genre of the video is 'News & Politics', the likelihood that the next video is 'Entertainment' is 41.94%
+Given that the current genre of the video is 'People & Blogs', the likelihood that the next video is 'Entertainment' is 39.73%
+Given that the current genre of the video is 'Film & Animation', the likelihood that the next video is 'Entertainment' is 35.98%
+Given that the current genre of the video is 'Travel & Events', the likelihood that the next video is 'Entertainment' is 35.39%
+Given that the current genre of the video is 'Autos & Vehicles', the likelihood that the next video is 'Entertainment' is 34.29%
+Given that the current genre of the video is 'Unknown', the likelihood that the next video is 'Entertainment' is 33.74%
+Given that the current genre of the video is 'Education', the likelihood that the next video is 'People & Blogs' is 32.47%
+Given that the current genre of the video is 'Howto & Style', the likelihood that the next video is 'People & Blogs' is 31.73%
+Given that the current genre of the video is 'Nonprofits & Activism', the likelihood that the next video is 'People & Blogs' is 30.55%
+Given that the current genre of the video is 'Nonprofits & Activism', the likelihood that the next video is 'Entertainment' is 30.15%
+Given that the current genre of the video is 'Travel & Events', the likelihood that the next video is 'People & Blogs' is 29.32%
+Given that the current genre of the video is 'People & Blogs', the likelihood that the next video is 'Howto & Style' is 29.26%
+Given that the current genre of the video is 'Entertainment', the likelihood that the next video is 'People & Blogs' is 28.91%
+Given that the current genre of the video is 'Entertainment', the likelihood that the next video is 'Howto & Style' is 28.10%
+Given that the current genre of the video is 'Education', the likelihood that the next video is 'Entertainment' is 26.29%
+Given that the current genre of the video is 'Pets & Animals', the likelihood that the next video is 'Entertainment' is 25.60%
+Given that the current genre of the video is 'Music', the likelihood that the next video is 'Entertainment' is 25.60%
+Given that the current genre of the video is 'Howto & Style', the likelihood that the next video is 'Entertainment' is 25.31%
+Given that the current genre of the video is 'Sports', the likelihood that the next video is 'Howto & Style' is 24.83%
+Given that the current genre of the video is 'Gaming', the likelihood that the next video is 'Gaming' is 23.97%
+Given that the current genre of the video is 'Sports', the likelihood that the next video is 'Sports' is 22.16%
+Given that the current genre of the video is 'Comedy', the likelihood that the next video is 'People & Blogs' is 21.24%
+Given that the current genre of the video is 'News & Politics', the likelihood that the next video is 'Education' is 21.04%
+Given that the current genre of the video is 'Science & Technology', the likelihood that the next video is 'Entertainment' is 20.50%
+Given that the current genre of the video is 'Gaming', the likelihood that the next video is 'Entertainment' is 17.66%
 
 Chart:
-+----------------------+----------------------+
-|        Actual        |      Predicted       |
-+----------------------+----------------------+
-|   News & Politics    |    Entertainment     |
-|    People & Blogs    |    Entertainment     |
-| Science & Technology | Science & Technology |
-|      Education       |      Education       |
-|    Entertainment     |    Entertainment     |
-|    Howto & Style     |    Entertainment     |
-|      Education       |    Entertainment     |
-|    Howto & Style     |    Howto & Style     |
-|        Sports        |    Entertainment     |
-|    Entertainment     |    People & Blogs    |
-|   Film & Animation   |    Entertainment     |
-| Science & Technology |    Entertainment     |
-|        Gaming        |    Entertainment     |
-|   Autos & Vehicles   |    Entertainment     |
-|    People & Blogs    |    People & Blogs    |
-|       Unknown        |    Entertainment     |
-|        Comedy        |    People & Blogs    |
-|   Travel & Events    |    Entertainment     |
-|        Comedy        |    Entertainment     |
-+----------------------+----------------------+
++-----------------------+----------------------+
+|        Actual         |      Predicted       |
++-----------------------+----------------------+
+|     Entertainment     |    Entertainment     |
+|    People & Blogs     |    People & Blogs    |
+|    People & Blogs     |      Education       |
+|    People & Blogs     |    Entertainment     |
+|        Sports         |    Entertainment     |
+|        Comedy         |    Entertainment     |
+|    News & Politics    |    Entertainment     |
+|   Autos & Vehicles    |    Entertainment     |
+|    Travel & Events    |   Travel & Events    |
+| Science & Technology  | Science & Technology |
+|    Travel & Events    |    People & Blogs    |
+|       Education       |    Entertainment     |
+|        Sports         |        Sports        |
+|        Gaming         |        Gaming        |
+|     Entertainment     |    Howto & Style     |
+| Science & Technology  |    Entertainment     |
+| Nonprofits & Activism |    Entertainment     |
+|         Music         |    Entertainment     |
+|       Education       |      Education       |
+|     Howto & Style     |    Entertainment     |
+|        Unknown        |    Entertainment     |
+| Nonprofits & Activism |    People & Blogs    |
+|        Gaming         |    Entertainment     |
+|     Howto & Style     |    People & Blogs    |
+|    News & Politics    |      Education       |
+|        Comedy         |    People & Blogs    |
+|     Entertainment     |    People & Blogs    |
+|   Film & Animation    |    Entertainment     |
+|    People & Blogs     |    Howto & Style     |
+|     Howto & Style     |    Howto & Style     |
+|    Pets & Animals     |    Entertainment     |
+|       Education       |    People & Blogs    |
+|    Travel & Events    |    Entertainment     |
+|        Sports         |    Howto & Style     |
++-----------------------+----------------------+
 Most Watched Category: Entertainment
-Least Watched Category: News & Politics
+Least Watched Category: Autos & Vehicles

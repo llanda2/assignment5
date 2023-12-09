@@ -152,6 +152,8 @@
 
 import json
 import os
+
+import numpy as np
 from googleapiclient.discovery import build
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -195,12 +197,17 @@ def fetch_video_category(api_key, video_url):
 with open('/Users/laurenlanda/Desktop/Takeout/YouTube and YouTube Music/history/watch-history.json', 'r') as file:
     watch_history = json.load(file)
 # Use only the first 500 entries for testing
-watch_history_subset = watch_history[:500]
+watch_history_subset = watch_history[:1000]
 
 # Extract relevant information from the subset
 video_texts = [video['title'] + ' ' + video.get('description', '') for video in watch_history_subset]
 video_urls = [video.get('titleUrl', '') for video in watch_history_subset if 'titleUrl' in video]
 video_categories = [fetch_video_category(api_key, url) for url in video_urls]
+
+## Perform random sampling
+random_indices = np.random.permutation(len(video_texts))
+video_texts = [video_texts[i] for i in random_indices]
+video_categories = [video_categories[i] for i in random_indices]
 
 # Train a simple classifier using video categories
 X_train, X_test, y_train, y_test = train_test_split(video_texts, video_categories, test_size=0.2, random_state=42)
@@ -214,6 +221,7 @@ classifier = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
 # Train the classifier
 classifier.fit(X_train, y_train)
+
 
 # Update the category_mapping dictionary based on the actual category IDs
 category_mapping = {
