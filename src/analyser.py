@@ -266,7 +266,11 @@ output_file_path = os.path.join(output_directory, 'genreResults.txt')
 # Create the output directory if it doesn't exist
 os.makedirs(output_directory, exist_ok=True)
 
-# Write the sorted predictions to the output file
+from tabulate import tabulate
+
+# ...
+
+# Write the unique predictions to the output file
 with open(output_file_path, 'w') as output_file:
     # Predict the next video category for each video in the dataset
     predictions = []
@@ -275,30 +279,72 @@ with open(output_file_path, 'w') as output_file:
         # Get the current title
         current_title = X_test[video_id]
 
-        # Make prediction on the current title
-        predicted_category_id = classifier.predict([current_title])[0]
+        # Make prediction on the current title with probabilities
+        predicted_category_prob = classifier.predict_proba([current_title])[0]
+        predicted_category = classifier.classes_[predicted_category_prob.argmax()]
+        probability_percentage = predicted_category_prob.max() * 100
 
         # Map category IDs to category names using the globally defined category_mapping
         current_category_name = category_mapping.get(current_category_id, 'Unknown')
-        predicted_category_name = category_mapping.get(predicted_category_id, 'Unknown')
+        predicted_category_name = category_mapping.get(predicted_category, 'Unknown')
 
         # Store predictions in a list
         predictions.append({
             'current_category': current_category_name,
-            'predicted_category': predicted_category_name
+            'predicted_category': predicted_category_name,
+            'probability_percentage': probability_percentage,
+            'views': video_id  # Replace this with the actual number of views
         })
 
-    # Write the predictions to the output file
+    # Remove duplicate predictions based on 'current_category' and 'predicted_category'
+    unique_predictions = []
+    seen_combinations = set()
+
     for prediction in predictions:
-        output_line = f"Actual: {prediction['current_category']} | Predicted: {prediction['predicted_category']}\n"
+        combination = (prediction['current_category'], prediction['predicted_category'])
+        if combination not in seen_combinations:
+            seen_combinations.add(combination)
+            unique_predictions.append(prediction)
+
+    # Sort predictions based on probability in descending order
+    sorted_predictions = sorted(unique_predictions, key=lambda x: x['probability_percentage'], reverse=True)
+
+    # Write the sorted predictions to the output file
+    for prediction in sorted_predictions:
+        output_line = (f"Given that the current genre of the video is '{prediction['current_category']}', "
+                       f"the likelihood that the next video is '{prediction['predicted_category']}' is {prediction['probability_percentage']:.2f}%\n")
         output_file.write(output_line)
 
     # Print chart with actual and predicted categories
-    chart_data = [(category_mapping.get(current_category_id, 'Unknown'), category_mapping.get(predicted_category_id, 'Unknown')) for current_category_id, predicted_category_id in zip(y_test, classifier.predict(X_test))]
+    chart_data = [(category_mapping.get(current_category_id, 'Unknown'), category_mapping.get(predicted_category, 'Unknown')) for current_category_id, predicted_category in zip(y_test, classifier.predict(X_test))]
+
+    # Remove duplicate entries in the chart
+    seen_chart_combinations = set()
+    unique_chart_data = []
+
+    for entry in chart_data:
+        if entry not in seen_chart_combinations:
+            seen_chart_combinations.add(entry)
+            unique_chart_data.append(entry)
 
     output_file.write("\nChart:\n")
     chart_headers = ["Actual", "Predicted"]
-    chart_str = tabulate(chart_data, headers=chart_headers, tablefmt="pretty")
+    chart_str = tabulate(unique_chart_data, headers=chart_headers, tablefmt="pretty")
     output_file.write(chart_str)
+
+    # Find the category watched the most and least
+    category_counts = {}
+    for entry in unique_chart_data:
+        for category in entry:
+            if category in category_counts:
+                category_counts[category] += 1
+            else:
+                category_counts[category] = 1
+
+    most_watched_category = max(category_counts, key=category_counts.get)
+    least_watched_category = min(category_counts, key=category_counts.get)
+
+    output_file.write(f"\nMost Watched Category: {most_watched_category}\n")
+    output_file.write(f"Least Watched Category: {least_watched_category}\n")
 
 print(f"Results written to: {output_file_path}")
