@@ -13,7 +13,7 @@ from tabulate import tabulate
 api_key = 'AIzaSyBB__ugeyjrQxGceHF1S6o0PIqBoOfWD4E'  # Replace with your actual YouTube API key
 
 # Fetch video categories using YouTube API
-# Followed youtube video for setting this up (referenced in README.md #4)
+# Followed youtube video for setting this up (referenced in README.md #4 and #2)
 def fetch_video_category(api_key, video_url):
     youtube = build('youtube', 'v3', developerKey=api_key)
 
@@ -60,6 +60,7 @@ X_train = [text for text, category in zip(X_train, y_train) if category is not N
 y_train = [category for category in y_train if category is not None]
 
 # Create a pipeline with TF-IDF vectorizer and Naive Bayes classifier
+# Used scikit-learn documentation (#1 in reference)
 classifier = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
 # Train the classifier
