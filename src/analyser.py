@@ -13,6 +13,7 @@ from tabulate import tabulate
 api_key = 'AIzaSyBB__ugeyjrQxGceHF1S6o0PIqBoOfWD4E'  # Replace with your actual YouTube API key
 
 # Fetch video categories using YouTube API
+# Followed youtube video for setting this up (referenced in README.md #4)
 def fetch_video_category(api_key, video_url):
     youtube = build('youtube', 'v3', developerKey=api_key)
 
