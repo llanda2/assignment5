@@ -1,6 +1,5 @@
 import json
 import os
-
 import numpy as np
 from googleapiclient.discovery import build
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -8,6 +7,11 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import train_test_split
 from tabulate import tabulate
+
+_author__ = "Lauren Landa"
+__copyright__ = "Copyright 2023, Westmont College"
+__credits__ = ["Lauren Landa"]
+__license__ = "MIT"
 
 # Set up API key
 api_key = 'AIzaSyBB__ugeyjrQxGceHF1S6o0PIqBoOfWD4E'  # Replace with your actual YouTube API key
