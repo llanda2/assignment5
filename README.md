@@ -1,14 +1,46 @@
-# assignment5
-Repository for assignment 5. Using google takeout to look at youtube watch history and analyze the data
+# Assignment 5: Information Retrieval from Real Data
+**Westmont College Fall 2023**
 
+**CS 128 Information Retrieval and Big Data**
 
-#Sources so far
-TF-IDF Vectorization: https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
-youtube api: https://developers.google.com/youtube/v3
-General: https://olivia-zha.medium.com/youtube-activity-analysis-f8da36b5832
-How to use youtube api through gcp: https://www.youtube.com/watch?v=TIZRskDMyA4&t=546s
-Chat GPT Prompts and outputs:
+*Assistant Professor* Mike Ryu (mryu@westmont.edu) 
+## Author Information
+* **Name**: Lauren Landa
 
+## Problem Description
+I wanted to analyze my Google Takeout information to find trends, patterns, etc. in the data. Analyzed data and retrieved the data through techniques covered in class such as TF-IDF Vectorization, cloud platforms, Naive Bayes' Classifier, and more. 
+  
+## Description of the Solution
+1.  Import necessary libraries, including json, os, numpy, Google API client for YouTube (googleapiclient), and scikit-learn for machine learning tasks (sklearn)
+2. Set up API Key
+3. Fetching Video Categories
+      * Implement a function fetch_video_category to fetch the category of a YouTube video using its URL
+4.  Load in Youtube Watch History
+      * Loaded data in from json file which was obtained through Google Takeout
+5. Extract Relevant Information
+      * Extract relevant information from the watch history subset, including video texts, URLs, and categories using the previously defined         function (Could do more information but for this project just extracted stated information)
+6. Random Sampling
+      * Perform random sampling on the video texts and categories
+7. Training a Classifier
+      * Split the data into training and testing sets
+      * Create a pipeline with a TF-IDF vectorizer and a Naive Bayes classifier
+      * Train the classifier on the training data
+8. Updating Category Mapping
+      * Update the category_mapping dictionary based on actual category IDs
+9. Making Predictions
+      * Make predictions on the test set and evaluate the accuracy
+10. Generating Output
+      * Define an output directory and file path
+      * Write the unique predictions to a text file, including current and predicted categories with probabilities
+      * Create a chart displaying actual and predicted categories
+      * Determine the most and least-watched categories
+
+## References
+1. TF-IDF Vectorization: [scikit-learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html)
+2. YouTube API: [YouTube Data API Documentation](https://developers.google.com/youtube/v3)
+3. General YouTube Activity Analysis: [Medium Article](https://olivia-zha.medium.com/youtube-activity-analysis-f8da36b5832)
+4. Using YouTube API through Google Cloud Platform: [YouTube Video](https://www.youtube.com/watch?v=TIZRskDMyA4&t=546s)
+5. ChatGPT Prompt and Output:
 Prompt: give example code for looking at accuracy and a confusion matrix for a train test split classifier
 Output: # Import necessary libraries
 from sklearn.model_selection import train_test_split
