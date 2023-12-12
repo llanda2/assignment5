@@ -38,6 +38,10 @@ I wanted to analyze my Google Takeout information to find trends, patterns, etc.
       * Write the unique predictions to a text file, including current and predicted categories with probabilities
       * Create a chart displaying actual and predicted categories
       * Determine the most and least-watched categories
+   
+        
+## Layout of Project
+src is where the analyzer.py is located the generated output goes to the out folder in the genreResults.txt. Unit tests are in src/tests. 
 
 ## References
 1. TF-IDF Vectorization: [scikit-learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html)
