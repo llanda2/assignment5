@@ -6,9 +6,13 @@
 *Assistant Professor* Mike Ryu (mryu@westmont.edu) 
 ## Author Information
 * **Name**: Lauren Landa
+* ***Code Word***: Genuine
 
 ## Problem Description
 I wanted to analyze my Google Takeout information to find trends, patterns, etc. in the data. Analyzed data and retrieved the data through techniques covered in class such as TF-IDF Vectorization, cloud platforms, Naive Bayes' Classifier, and more. 
+
+## Extra Credit Opprutunity
+* Used Youtube API through GCP
   
 ## Description of the Solution
 1.  Import necessary libraries, including json, os, numpy, Google API client for YouTube (googleapiclient), and scikit-learn for machine learning tasks (sklearn)
