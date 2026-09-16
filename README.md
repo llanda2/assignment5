@@ -11,7 +11,7 @@
 ## Problem Description
 I wanted to analyze my Google Takeout information to find trends, patterns, etc. in the data. Analyzed data and retrieved the data through techniques covered in class such as TF-IDF Vectorization, cloud platforms, Naive Bayes' Classifier, and more. 
 
-## Extra Credit Opprutunity
+## Extra Credit Opportunity
 * Used Youtube API through GCP
   
 ## Description of the Solution
